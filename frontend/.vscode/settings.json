@@ -1,0 +1,13 @@
+{
+  "parameterHints.hintingType": "variableAndType",
+  "parameterHints.padding": "1 2",
+  "parameterHints.languages": [
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact"
+  ],
+  "cSpell.words": [
+    "addtoast"
+  ]
+}
