@@ -20,6 +20,7 @@ import magnifierQuestion from '../../assets/images/magnifier-question.svg';
 
 import Loader from '../../components/loader';
 import Button from '../../components/button';
+import Modal from '../../components/modal';
 
 import formatPhone from '../../utils/format-phone';
 import contactsService from '../../services/contacts-service';
@@ -73,6 +74,16 @@ export default function Home() {
   return (
     <Container>
       <Loader isLoading={isLoading} />
+
+      <Modal
+        danger
+        title='Tem certeza que deseja remover o contato "Ramon Nunes"?'
+        confirmLabel="Deletar"
+        onCancel={() => alert('Cancelou')}
+        onConfirm={() => alert('Deletou')}
+      >
+        <h1>Testando</h1>
+      </Modal>
 
       {contacts.length > 0 && (
         <InputSearchContainer>

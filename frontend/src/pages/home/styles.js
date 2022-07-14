@@ -112,8 +112,9 @@ export const Card = styled.div`
       font-size: 14px;
       color: ${({ theme }) => theme.colors.gray[200]};
     }
+  }
 
-    .actions{
+  .actions{
       display: flex;
       align-items: flex;
 
@@ -123,7 +124,6 @@ export const Card = styled.div`
         margin-left: 8px;
       }
     }
-  }
 `;
 
 export const ErrorContainer = styled.div`

@@ -39,7 +39,7 @@ export default function ToastMessage({
 
 ToastMessage.propTypes = {
   message: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired,
     type: PropTypes.oneOf(['default', 'success', 'danger']),
     duration: PropTypes.number,
