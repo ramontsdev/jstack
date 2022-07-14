@@ -24,8 +24,8 @@ export const StyledButton = styled.button`
   }
 
   &:disabled {
-    background: #ccc;
-    cursor: no-drop;
+    background: #ccc !important;
+    cursor: no-drop !important;
   }
 
   ${({ theme, danger }) => danger && css`
