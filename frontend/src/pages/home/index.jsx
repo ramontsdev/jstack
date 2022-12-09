@@ -1,30 +1,30 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-nested-ternary */
-import { Link } from 'react-router-dom';
 import {
-  useEffect, useState, useMemo, useCallback,
+  useCallback, useEffect, useMemo, useState
 } from 'react';
+import { Link } from 'react-router-dom';
 
 import {
-  Container, InputSearchContainer, Header,
-  ListHeader, Card, ErrorContainer,
-  EmptyListContainer, SearchNotFoundContainer,
+  Card, Container, EmptyListContainer,
+  ErrorContainer, Header, InputSearchContainer,
+  ListHeader, SearchNotFoundContainer
 } from './styles';
 
+import emptyBox from '../../assets/images/empty-box.svg';
 import arrow from '../../assets/images/icons/arrow.svg';
 import edit from '../../assets/images/icons/edit.svg';
 import trash from '../../assets/images/icons/trash.svg';
-import sad from '../../assets/images/sad.svg';
-import emptyBox from '../../assets/images/empty-box.svg';
 import magnifierQuestion from '../../assets/images/magnifier-question.svg';
+import sad from '../../assets/images/sad.svg';
 
-import Loader from '../../components/loader';
 import Button from '../../components/button';
+import Loader from '../../components/loader';
 import Modal from '../../components/modal';
 
+import contactsService from '../../services/contacts-service';
 import formatPhone from '../../utils/format-phone';
 import toast from '../../utils/toast';
-import contactsService from '../../services/contacts-service';
 
 export default function Home() {
   const [contacts, setContacts] = useState([]);
@@ -62,7 +62,7 @@ export default function Home() {
 
   function handleToggleOrderBy() {
     setOrderBy(
-      (prevState) => (prevState === 'asc' ? 'desc' : 'asc'),
+      (prevState) => (prevState === 'asc' ? 'desc' : 'asc')
     );
   }
 
@@ -92,7 +92,7 @@ export default function Home() {
       await contactsService.deleteContact(contactBeingDeleted.id);
 
       setContacts((prevState) => prevState.filter(
-        (contact) => contact.id === contactBeingDeleted.id,
+        (contact) => contact.id === contactBeingDeleted.id
       ));
       handleCloseDeleteModal();
 
