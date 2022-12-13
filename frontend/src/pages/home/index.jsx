@@ -45,7 +45,6 @@ export default function Home() {
       setIsLoading(true);
 
       const contactsList = await contactsService.listContacts(orderBy);
-      // const contactsList = []; await contactsService.listContacts(orderBy);
 
       setHasError(false);
       setContacts(contactsList);
@@ -68,7 +67,6 @@ export default function Home() {
 
   function handleChangeSearchTerm(event) {
     setSearchTerm(event.target.value);
-    console.log({ searchTerm });
   }
 
   function handleTryAgain() {
