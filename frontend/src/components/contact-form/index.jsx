@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types';
 import {
-  useState, useEffect, forwardRef, useImperativeHandle,
+  forwardRef, useEffect, useImperativeHandle, useState
 } from 'react';
 
-import isEmailValid from '../../utils/is-email-valid';
-import formatPhone from '../../utils/format-phone';
 import useErrors from '../../hooks/use-errors';
 import categoriesService from '../../services/categories-service';
+import formatPhone from '../../utils/format-phone';
+import isEmailValid from '../../utils/is-email-valid';
 
+import useSafeAsyncState from '../../hooks/use-safe-async-state';
+import Button from '../button';
 import FormGroup from '../form-group';
 import Input from '../input';
 import Select from '../select';
-import Button from '../button';
-import { Form, ButtonContainer } from './styles';
-import useSafeAsyncState from '../../hooks/use-safe-async-state';
+import { ButtonContainer, Form } from './styles';
 
 const ContactForm = forwardRef(({ buttonLabel, onSubmit }, ref) => {
   const [name, setName] = useState('');
@@ -38,7 +38,7 @@ const ContactForm = forwardRef(({ buttonLabel, onSubmit }, ref) => {
       setName(contact.name ?? 'Valor da direita');
       setEmail(contact.email ?? '');
       setPhone(formatPhone(contact.phone) ?? '');
-      setCategoryId(contact.category_id ?? '');
+      setCategoryId(contact.category.id ?? '');
     },
     resetFields: () => {
       setName('');

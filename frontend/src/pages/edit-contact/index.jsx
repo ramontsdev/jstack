@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
 import ContactForm from '../../components/contact-form';
-import PageHeader from '../../components/page-header';
 import Loader from '../../components/loader';
+import PageHeader from '../../components/page-header';
 
+import useSafeAsyncAction from '../../hooks/use-safe-async-action';
 import contactsService from '../../services/contacts-service';
 import toast from '../../utils/toast';
-import useSafeAsyncAction from '../../hooks/use-safe-async-action';
 
 export default function EditContact() {
   const [isLoading, setIsLoading] = useState(true);
@@ -43,15 +43,8 @@ export default function EditContact() {
     loadContact();
   }, [id, history, safeAsyncAction]);
 
-  async function handleSubmit(formData) {
+  async function handleSubmit(contact) {
     try {
-      const contact = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        category_id: formData.categoryId,
-      };
-
       const contactData = await contactsService.updateContact(id, contact);
 
       setContactName(contactData.name);
