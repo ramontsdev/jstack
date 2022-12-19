@@ -24,9 +24,6 @@ const scaleOut = keyframes`
   to { transform: scale(0); }
 `;
 
-/* type OverlayProps = {
-  isLeaving: boolean;
-} */
 export const Overlay = styled.div`
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
