@@ -1,5 +1,5 @@
 import {
-  useCallback,
+  useCallback
 } from 'react';
 import useIsMounted from './use-is-mounted';
 
