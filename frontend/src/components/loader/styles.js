@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 const load = keyframes`
   0% {
@@ -34,6 +34,21 @@ const round = keyframes`
   }
 `;
 
+const fadeIn = keyframes`
+  from {
+    /* estilos iniciais */
+    opacity: 0;
+  }
+  to {
+    /* estilos finais (como o elemento vai permanecer em tela) */
+    opacity: 1;
+  }
+`;
+const fadeOut = keyframes`
+  from { opacity: 1; }
+  to { opacity: 0; }
+`;
+
 export const Overlay = styled.div`
   width: 100%;
   height: 100%;
@@ -44,6 +59,9 @@ export const Overlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: ${fadeIn} 0.3s;
+
+  ${({ isLeaving }) => isLeaving && css`animation: ${fadeOut} 0.3s forwards;`}
 
   .loader {
   color: ${({ theme }) => theme.colors.primary.main};
@@ -60,5 +78,5 @@ export const Overlay = styled.div`
   transform: translateZ(0);
   -webkit-animation: ${load} 1.7s infinite ease, ${round} 1.7s infinite ease;
   animation: ${load} 1.7s infinite ease, ${round} 1.7s infinite ease;
-  }
+}
 `;
