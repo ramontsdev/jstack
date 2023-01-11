@@ -3,11 +3,11 @@ import HttpClient from './utils/http-client';
 
 class CategoriesService {
   constructor() {
-    this.httpClient = new HttpClient('http://localhost:3001');
+    this.httpClient = new HttpClient('http://192.168.0.100:3001');
   }
 
-  async listCategories() {
-    const categories = await this.httpClient.get('/categories');
+  async listCategories(signal) {
+    const categories = await this.httpClient.get('/categories', { signal });
 
     return categories.map(categoryMapper.toDomain);
   }

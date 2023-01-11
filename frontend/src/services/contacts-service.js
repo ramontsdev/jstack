@@ -3,17 +3,17 @@ import HttpClient from './utils/http-client';
 
 class ContactsService {
   constructor() {
-    this.httpClient = new HttpClient('http://localhost:3001');
+    this.httpClient = new HttpClient('http://192.168.0.100:3001');
   }
 
-  async listContacts(orderBy = 'asc') {
-    const contacts = await this.httpClient.get(`/contacts?orderBy=${orderBy}`);
+  async listContacts(orderBy, signal) {
+    const contacts = await this.httpClient.get(`/contacts?orderBy=${orderBy || 'asc'}`, { signal });
 
     return contacts.map(contactMapper.toDomain);
   }
 
-  async getContactById(id) {
-    const contact = await this.httpClient.get(`/contacts/${id}`);
+  async getContactById(id, signal) {
+    const contact = await this.httpClient.get(`/contacts/${id}`, { signal });
 
     return contactMapper.toDomain(contact);
   }

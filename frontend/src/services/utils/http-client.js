@@ -1,5 +1,4 @@
 import APIError from '../../errors/api-error';
-import delay from '../../utils/delay';
 
 export class HttpClient {
   constructor(baseURL) {
@@ -10,6 +9,7 @@ export class HttpClient {
     return this.makeRequest(path, {
       method: 'GET',
       headers: options?.headers,
+      signal: options?.signal,
     });
   }
 
@@ -37,8 +37,6 @@ export class HttpClient {
   }
 
   async makeRequest(path, options) {
-    await delay(500);
-
     const headers = new Headers();
 
     if (options.body) {
@@ -54,12 +52,11 @@ export class HttpClient {
       });
     }
 
-    // console.log(options.headers);
-
     const response = await fetch(`${this.baseURL}${path}`, {
       method: options.method,
       body: JSON.stringify(options.body),
       headers,
+      signal: options.signal,
     });
 
     let responseBody = null;
