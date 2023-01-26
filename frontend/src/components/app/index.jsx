@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyles from '../../assets/styles/global';
 import defaultTheme from '../../assets/styles/themes/default';
 
-import Routes from '../../routes';
+import Router from '../../router';
 import Header from '../header';
 
 import { Container } from './styles';
@@ -22,7 +22,7 @@ function App() {
 
         <Container>
           <Header />
-          <Routes />
+          <Router />
         </Container>
       </ThemeProvider>
     </BrowserRouter>

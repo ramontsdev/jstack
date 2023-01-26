@@ -20,6 +20,7 @@
     "react-hooks"
   ],
   "rules": {
+    "react/require-default-props": "off",
     "no-multiple-empty-lines": "off",
     "comma-dangle": [
       "error",
